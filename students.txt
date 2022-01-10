@@ -1,5 +1,0 @@
-Student-Details-are-as-follows:-
-NAME:- Sudip
-ROLL: 32
-ADDRESS:- chakkarghatti
-PHONENUM:- 232
