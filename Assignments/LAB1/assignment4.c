@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include<stdlib.h>
-
+#include <stdlib.h>
 
 struct student
 {
@@ -33,15 +32,25 @@ int main()
         printf("PHONENUM:-\t");
         scanf("%d", &x.phonenumber);
     }
-        for (i = 0; i < n; i++)
+    for (i = 0; i < n; i++)
     {
-        fprintf(fptr, "Student-Details-are-as-follows:-");
-        fprintf(fptr,"\nNAME:- %s", x.name);
-     
-        fprintf(fptr,"\nROLL: %d", x.roll);
-       
-        fprintf(fptr,"\nADDRESS:- %s", x.address);
-       
-        fprintf(fptr,"\nPHONENUM:- %d", x.phonenumber);
+        if (x.name[i] > x.name[i + 1])
+        {
+            fprintf(fptr, "Sorted Name:-", x.name[i + 1]);
+            fprintf(fptr, "\nRoll:-", x.roll);
+            fprintf(fptr, "\nAddress", x.address);
+            fprintf(fptr, "\nphonenum", x.phonenumber);
+        }
     }
+    // for (i = 0; i < n; i++)
+    // {
+    //     fprintf(fptr, "Student-Details-are-as-follows:-");
+    //     fprintf(fptr, "\nNAME:- %s", x.name);
+
+    //     fprintf(fptr, "\nROLL: %d", x.roll);
+
+    //     fprintf(fptr, "\nADDRESS:- %s", x.address);
+
+    //     fprintf(fptr, "\nPHONENUM:- %d", x.phonenumber);
+    // }
 }
