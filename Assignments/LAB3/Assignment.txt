@@ -1,0 +1,283 @@
+// Write a simple program that converts the temperature in Celsius scale to Fahrenheit scale
+// and vice versa using the basic concept of class and object. Make separate classes for Celsius
+// and Fahrenheit which will have the private members that hold the temperature value and make
+// conversion functions in each class for conversion from one to another. For example, you need
+// to have a function toFahrenheit() in class Celsius that converts to Fahrenheit scale and returns the value.
+#include <iostream>
+using namespace std;
+class Celsius
+{
+private:
+    float celsius, fahren;
+
+public:
+    float toFarhenheit(float x)
+    {
+        celsius = x;
+        fahren = (x * 9 / 5) + 32;
+        return fahren;
+    }
+};
+class Fahrenheit
+{
+private:
+    float celsius, fahren;
+
+public:
+    float toCelsius(float y)
+    {
+        fahren = y;
+        celsius = (y - 32) * 5 / 9;
+        return celsius;
+    }
+};
+
+int main()
+{
+    Celsius t;
+    Fahrenheit x;
+    float a;
+    int type;
+    cout << "Choose a conversion type:- for Farhenheit to celsius-1 and for celsius to Farhenheit-2//default is celsius to farhenheit converter\n";
+    cin >> type;
+    if (type == 2)
+    {
+        cout << "Enter the temperature in celsius\n";
+        cin >> a;
+        cout <<"\nThe converted tempr in Farhenheit is "<< t.toFarhenheit(a);
+    }else{
+        cout << "Enter the tempr in Farhenheit\n";
+        cin >> a;
+        cout << "\nThe converted tempr in celsius is "<< x.toCelsius(a);
+    }
+    return 0;
+}// Assume that you want to check whether the number is prime or not. 
+// Write a program that asks for numbers repeatedly. When it finishes checking
+//  a number the program asks if the user wants to do another calculation. The response 
+// can be 'y' or 'n'. Don't forget to use the object-oriented concept.
+#include <iostream>
+using namespace std;
+
+class Test
+{
+public:
+    int check(int x)
+    {
+        int i, p = 0;
+
+        for (i = 2; i < x; i++)
+        {
+            if (x % i == 0)
+            {
+                p = 1;
+                break;
+            }
+        }
+        return p;
+    }
+};
+
+int main()
+{
+
+    int x, p;
+    char check;
+    bool toggle = true;
+
+    while (toggle)
+    {
+        cout << "\nEnter a number:";
+        cin >> x;
+        Test obj;
+        p = obj.check(x);
+        if (p == 0)
+        {
+            cout << "\nNumber is prime:" << x;
+        }
+        else
+        {
+            cout << "\nNumber is not prime:" << x;
+        }
+        cout << "\nwant to enter more y/n\n";
+        
+        cin >> check;
+        if(check == 'y'|| check == 'Y'){
+            toggle = true;
+        }
+        else{
+            toggle = false;
+        }
+    }
+
+    return 0;
+}// Create a class called carpark that has int data member for car id, int data member for charge/hour,
+//  and float data member for the parked time. Make functions to set data members and show the charges 
+// and parked hours of the corresponding car id. Make functions for setting and showing the data members.
+//  Member function should be called from other functions.
+#include <iostream>
+using namespace std;
+class carpark{
+    private:
+    int id, chargeperhr;
+    float parkedtime;
+    public:
+    void setData(int x, int y, float z){
+        id = x;
+        chargeperhr = y;
+        parkedtime = z;
+
+    }
+    void showData(){
+
+        cout <<"For this "<< id<<endl;
+        cout << "The toal charges is" << int(parkedtime) * chargeperhr <<endl;        
+
+    }
+};
+
+int main(){
+    carpark t;
+    int a, b;
+    float c;
+    cout << "Enter the car id";
+    cin >> a;
+    cout << "Enter charger per hour";
+    cin >> b;
+    cout << "Enter parked time";
+    cin >> c;
+    t.setData(a, b, c);
+    t.showData();
+
+
+}// Write a program with classes to represent a circle, rectangle, and triangle. 
+// Each class should have data members to represent the actual objects and member
+//  functions to read and display objects, find perimeter and area of the objects,
+//  and other useful functions. Use the classes to create objects in your program.
+#include<iostream>
+#include <math.h>
+using namespace std;
+class circle{
+    private:
+    int r;
+    public:
+    void set(int x){
+        r=x;
+    }
+    int area(){
+        int area = 3.14 * r * r;
+        return area;
+    }
+    int perimeter(){
+        int peremeter = 2 * 3.14 * r;
+        return peremeter;
+    }
+};
+class rectangle{
+    private:
+    int l, bd;
+    public:
+    void set(int x, int y){
+        l=x;
+        bd=y;
+    }
+    int area(){
+        int area = l * bd;
+        return area;
+    }
+    int perimeter(){
+        int peremeter = 2*(l+bd);
+        return peremeter;
+    }
+};
+class triangle{
+        private:
+    int a, b, c;
+    public:
+    void set(int x, int y, int z){
+        a=x;
+        b=y;
+        c=z;
+    }
+    int area(){
+        int s= a+b+c;
+        int area = s * sqrt(s*(s-a)*(s-b)*(s-c));
+        return area;
+    }
+    int perimeter(){
+        int peremeter = a+b+c;
+        return peremeter;
+    }
+
+};
+
+int main(){
+    int r, l, bd, a, b, c, check;
+    circle q;
+    rectangle w;
+    triangle e;
+    cout << "---------------------------------Area and perimeter calculator-----------------------------------\n";
+    cout << "Which area you want to calculate for circle = 0, rectangle=1, triangle=3";
+    cin >>check;
+    if(check == 1){
+        cin >> r;
+        q.set(r);
+        cout << q.area()<<endl;
+        cout << q.perimeter()<<endl;
+    }else if(check ==2){
+        cin  >> l >>bd;
+        w.set(l, bd);
+        cout << w.area()<< endl;
+        cout << w.perimeter()<<endl;
+    }
+    else if(check == 3){
+        cin  >> a >> b >>c;
+        e.set(a,b,c);
+        cout << e.area()<<endl;
+        cout << e.perimeter()<<endl;
+    }
+}// Assume that an object represents an employee report that contains information 
+// like employee id, total bonus, total overtime in a particular year. Use an array 
+// of objects to represent n employees' reports. Write a program that displays the report. 
+// Use setpara() member function to set report attributes by passing the arguments and member
+//  function displayreport() to show the report according to the parameter passed. Display
+//   the report in the following format.
+
+// An employee with ... ... ... has received Rs ... ... ...as a bonus
+
+// and
+
+// // had worked ... ... ... hours as overtime in the year ... ... ...
+
+#include <iostream>
+
+using namespace std;
+class employee{
+    private:
+    int id,year=2021;
+    float totalbonus, totalovertime;
+    public:
+    int setpara(int x, float y, float z){
+        id = x;
+        totalbonus = y;
+        totalovertime =z;
+    }
+    int displayreport(){
+        cout << "An employee with "<< id << " has received Rs "<< totalbonus << " as a bonus."<<endl;
+        cout << "and had worked"<< totalovertime << "hours overtime in the year "<< year<<endl;
+    }
+
+};
+
+int main(){
+    int i,n,a;
+    float b, c;
+    cout << "Enter the no.of employee you want to enter"<<endl;
+    cin >> n;
+    employee t[n];
+    for(i=0; i<n; i++){
+    cout << "Enter the employee id totalbonus and total overtime simultaneously"<<endl;
+    cin >> a >> b >>c;
+    t[i].setpara(a, b, c);
+    t[i].displayreport();
+    }
+}
