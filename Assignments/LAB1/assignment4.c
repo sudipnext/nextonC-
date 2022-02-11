@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct student
 {
@@ -7,10 +8,11 @@ struct student
     int roll;
     char address[20];
     int phonenumber;
-} x;
+} x[100];
 int main()
 {
-    int i, n;
+    struct student temp;
+    int i, n, j;
     FILE *fptr;
     fptr = fopen("students.txt", "w");
     if (fptr == NULL)
@@ -24,33 +26,32 @@ int main()
     for (i = 0; i < n; i++)
     {
         printf("NAME:-\t");
-        scanf("%s", x.name);
+        scanf("%s", x[i].name);
         printf("ROLL:-\t");
-        scanf("%d", &x.roll);
+        scanf("%d", &x[i].roll);
         printf("ADDRESS:-\t");
-        scanf("%s", x.address);
+        scanf("%s", x[i].address);
         printf("PHONENUM:-\t");
-        scanf("%d", &x.phonenumber);
+        scanf("%d", &x[i].phonenumber);
+    }
+    fprintf(fptr, "Student-Details-are-as-follows:-");
+    for (i = 0; i < n; i++)
+    {
+        for (j = i + 1; j < n; j++)
+        {
+            if (strcmp(x[i].name, x[j].name > 0))
+            {
+                temp = x[i].name;
+                x[i].name= x[j].name;
+                x[j].name=temp;
+            }
+        }
     }
     for (i = 0; i < n; i++)
     {
-        if (x.name[i] > x.name[i + 1])
-        {
-            fprintf(fptr, "Sorted Name:-", x.name[i + 1]);
-            fprintf(fptr, "\nRoll:-", x.roll);
-            fprintf(fptr, "\nAddress", x.address);
-            fprintf(fptr, "\nphonenum", x.phonenumber);
-        }
+        fprintf(fptr, "\nNAME:- %s", x[i].name);
+        fprintf(fptr, "\nROLL: %d", x[i].roll);
+        fprintf(fptr, "\nADDRESS:- %s", x[i].address);
+        fprintf(fptr, "\nPHONENUM:- %d", x[i].phonenumber);
     }
-    // for (i = 0; i < n; i++)
-    // {
-    //     fprintf(fptr, "Student-Details-are-as-follows:-");
-    //     fprintf(fptr, "\nNAME:- %s", x.name);
-
-    //     fprintf(fptr, "\nROLL: %d", x.roll);
-
-    //     fprintf(fptr, "\nADDRESS:- %s", x.address);
-
-    //     fprintf(fptr, "\nPHONENUM:- %d", x.phonenumber);
-    // }
 }
