@@ -1,6 +1,5 @@
 #include <iostream>
 #include <windows.h>
-#include <algorithm>
 #include <string>
 using namespace std;
 class PinCheck
