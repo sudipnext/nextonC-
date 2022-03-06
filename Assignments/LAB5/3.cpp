@@ -24,18 +24,69 @@ public:
         else
             return 0;
     }
+    int operator!=(compare const &l)
+    {
+        if (x != l.x)
+            return 1;
+        else
+            return 0;
+    }
+    int operator<(compare const &l)
+    {
+        if (x < l.x)
+            return 1;
+        else
+            return 0;
+    }
+    int operator>(compare const &l)
+    {
+        if (x > l.x)
+            return 1;
+        else
+            return 0;
+    }
+    int operator<=(compare const &l)
+    {
+        if (x <= l.x)
+            return 1;
+        else
+            return 0;
+    }
+    int operator>=(compare const &l)
+    {
+        if (x >= l.x)
+            return 1;
+        else
+            return 0;
+    }
 };
 
 int main()
 {
-    compare a(2), b(2);
+    compare a(4), b(2);
     if (a == b)
     {
         cout << "Same" << endl;
     }
-    else
+    else if (a != b)
     {
         cout << "Not Equal" << endl;
+    }
+    else if (a > b)
+    {
+        cout << "A is greater than B";
+    }
+    else if (a < b)
+    {
+        cout << "b is greater than B";
+    }
+    else if (a >= b)
+    {
+        cout << "A is greater than and equal to B";
+    }
+    else if (a <= b)
+    {
+        cout << "A is less than and equal B";
     }
     return 0;
 }
