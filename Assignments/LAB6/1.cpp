@@ -2,12 +2,12 @@
 //  Make a class distance with two data members, meter and centimeter. You can add function members as per your requirement.
 #include <iostream>
 using namespace std;
-class distance
+class distancet
 {
     float meter, centimeter;
 
 public:
-    distance()
+    distancet()
     {
         meter = 0;
         centimeter = 0;
@@ -22,7 +22,7 @@ public:
     operator float()
     {
         float met;
-        met = meter + centimeter / 100;
+        met = meter + centimeter / 100.0;
         return met;
     }
     void display()
@@ -34,4 +34,9 @@ public:
 
 int main()
 {
+    distancet d, e;
+    d.getData();
+    d.display();
+    
+
 }

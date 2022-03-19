@@ -3,7 +3,7 @@
 #include <iostream>
 
 using namespace std;
-float& display(float &, float &);
+float display(float &, float &);
 int main(){
     float a, b;
     cout << "Enter the two temprs: -- ";
@@ -12,7 +12,7 @@ int main(){
     return 0;
 
 }
-float& display(float &x, float &y){
+float display(float &x, float &y){
     if (x > y){
         return x;
     }

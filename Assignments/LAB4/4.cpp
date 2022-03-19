@@ -8,26 +8,35 @@ class Vechile
 private:
     int num_vechile, hour;
     float rate;
+
 public:
+    Vechile()
+    {
+        num_vechile = 0;
+        hour = 0;
+        rate = 0;
+    }
     Vechile(int x, int y, float z)
     {
         num_vechile = x;
         hour = y;
         rate = z;
     }
-    Vechile(Vechile &a){
-        num_vechile= a.num_vechile;
+    Vechile(Vechile &a)
+    {
+        num_vechile = a.num_vechile;
         hour = a.hour;
         rate = a.rate;
-
     }
 
     int total_charge()
     {
-        int total = rate*hour*0.9;
+        int total = rate * hour * 0.9;
 
-        if (num_vechile > 10) return total;
-        else return rate*hour;
+        if (num_vechile > 10)
+            return total;
+        else
+            return rate * hour;
     }
 };
 
@@ -35,14 +44,13 @@ int main()
 {
     int hour, num_vech;
     float rate;
-    cout << "Enter the Vechile number, hour, rate respectively:- "<<endl;
-    cin >> num_vech >>hour>>rate;
+    cout << "Enter the Vechile number, hour, rate respectively:- " << endl;
+    cin >> num_vech >> hour >> rate;
     Vechile obj(num_vech, hour, rate);
     Vechile obj2(obj);
-    //displaying the copy constructor
-    cout << obj.total_charge()<<endl;
-    cout << obj2.total_charge()<<endl;
-    cout << obj.total_charge();
+    // displaying the copy constructor
+    cout << obj.total_charge() << endl;
+    cout << obj2.total_charge() << endl;
 
     return 0;
 }
