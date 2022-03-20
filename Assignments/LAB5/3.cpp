@@ -31,7 +31,7 @@ public:
         else
             return 0;
     }
-    int operator<(compare const &l)
+    int operator<(compare l)
     {
         if (x < l.x)
             return 1;
@@ -63,15 +63,15 @@ public:
 
 int main()
 {
-    compare a(4), b(2);
+    compare a(1), b(2);
     if (a == b)
     {
         cout << "Same" << endl;
     }
-    else if (a != b)
-    {
-        cout << "Not Equal" << endl;
-    }
+    // else if (a != b)
+    // {
+    //     cout << "Not Equal" << endl;
+    // }
     else if (a > b)
     {
         cout << "A is greater than B";
