@@ -4,8 +4,7 @@ using namespace std;
 
 int main(){
     char x[20];
-    ifstream read;
-    read.open("myfile.txt");
+    ifstream read("myfile.txt");
     read >> x;
     while(read){
         cout << x;
