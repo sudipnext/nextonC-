@@ -9,7 +9,6 @@ class PinCheck
 {
 private:
     int pin, settingpin = 0;
-    int blocklist[100];
     // Checking pin and returning true if settingpin equals to pin
     int pinCheck(int a)
     {
