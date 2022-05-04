@@ -1,7 +1,10 @@
+// including the necessary header files
 #include <iostream>
 #include <windows.h>
 #include <string>
+#include <ctime>
 using namespace std;
+// created a pincheck class which checks the pin entered by the user
 class PinCheck
 {
 private:
@@ -31,32 +34,43 @@ public:
 };
 class Statement
 {
-
-private:
-    int enquiry, statement;
-    int set_enquiry()
-    {
-    }
-    int set_statement()
-    {
-    }
-    int balancededuction()
-    {
-    }
-
 protected:
+    string billdispense;
     int balance = 60000;
+    time_t now = time(0);
+    char *date = ctime(&now);
 
 public:
-    int give_enquiry(int y)
+    int give_enquiry()
     {
+        cout << "\nYou have currently Rs. " << balance << " in your account at:- " << date << endl;
     }
 
-    int give_statement()
+    int give_statement(int a)
     {
+
+        cout << "Do you want bill dispense? Y/N\n";
+        cin >> billdispense;
+        if (billdispense == "Y" || billdispense == "y")
+        {
+            cout << "Bill\n";
+            cout << "+-------------------------------------------------------+" << endl;
+            cout << "|                    Statement                          |" << endl;
+            cout << "+---+-------------------+-------------------------------+" << endl;
+            cout << "| 1 | Date              | " << date << "                |" << endl;
+            cout << "+---+-------------------+-------------------------------+" << endl;
+            cout << "| 2 | Withdrawl Amount  | " << a << "                   |" << endl;
+            cout << "+---+-------------------+-------------------------------+" << endl;
+            cout << "| 3 | Account Balance   |  " << balance << "            |" << endl;
+            cout << "+---+-------------------+-------------------------------+" << endl;
+            cout << "| 4 | Available Balance |  " << balance - a << "        |" << endl;
+            cout << "+---+-------------------+-------------------------------+" << endl;
+            cout << "|                 Thank You !                           |" << endl;
+            cout << "+---+-------------------+-------------------------------+" << endl;
+        }
     }
 };
-class cash : protected Statement
+class cash : public Statement
 {
 private:
     int fastcash, withdrawl;
@@ -64,7 +78,6 @@ private:
 public:
     int give_fast_cash_info()
     {
-
         cout << "Enter the Cash you want to withdraw\n";
         cout << "RS 1000\n\n";
         cout << "RS 2000\n\n";
@@ -74,64 +87,40 @@ public:
     }
     int give_withdrawl(int amount)
     {
-        
-        cout << "\nAvailable Balance:- " << balance;
-        balance -= amount;
+        give_statement(amount);
+            cout << "\nBalance:- " << balance;
+            balance -= amount;
+            cout << "\nGenerating.";
+            Sleep(1000);
+            cout << ".";
+            Sleep(1000);
+            cout << ".";
+            Sleep(1000);
         switch (amount)
         {
         case 1000:
-            cout << "\nGenerating. ";
-            Sleep(500);
-            cout << "\nGenerating..";
-            Sleep(500);
-            cout << "\nGenerating...";
-            Sleep(500);
-            cout << "\nRemaining balance is  " << balance;
-            cout << "1000 Rs is deducted!\n";
+            cout << "\nRemaining balance is  Rs" << balance;
+            cout << "\nRs1000 Rs is deducted!\n";
             break;
         case 2000:
-            cout << "\nGenerating. ";
-            Sleep(500);
-            cout << "\nGenerating..";
-            Sleep(500);
-            cout << "\nGenerating...";
-            Sleep(500);
             cout << "\nRemaining balance is  " << balance;
             cout << "\n2000 Rs is deducted!";
             break;
         case 3000:
-            cout << "\nGenerating. ";
-            Sleep(500);
-            cout << "\nGenerating..";
-            Sleep(500);
-            cout << "\nGenerating...";
-            Sleep(500);
             cout << "\nRemaining balance is  " << balance;
             cout << "3000 Rs is deducted!";
             break;
         case 4000:
-            cout << "\nGenerating. ";
-            Sleep(500);
-            cout << "\nGenerating..";
-            Sleep(500);
-            cout << "\nGenerating...";
-            Sleep(500);
             cout << "\nRemaining balance is  " << balance;
             cout << "\n4000 Rs is deducted!";
             break;
         case 5000:
-            cout << "\nGenerating. ";
-            Sleep(500);
-            cout << "\nGenerating..";
-            Sleep(500);
-            cout << "\nGenerating...";
-            Sleep(500);
             cout << "\nRemaining balance is  " << balance;
             cout << "\n5000 Rs is deducted!";
             break;
 
         default:
-            cout << "your balance is "<<balance << amount << " is remaining"<<endl;
+            cout << "\nyour balance is Rs. " << balance << ". Rs. " << amount << " is remaining" << endl;
             break;
         }
     }
@@ -181,8 +170,7 @@ int main()
     cout << "\n\n1.FastCash";
     cout << "\t\t\t\t\t\t2.WithDrawl\n";
     cout << "\n3.BalanceEnquiry";
-    cout << "\t\t\t\t\t4.MiniStatement\n";
-    cout << "\n5.PinChange";
+    cout << "\t\t\t\t\t4.PinChange\n";
 
     cout << "\nNote:-If you are unauthorized person please leave immediately all the actions are being recorded!\n";
 
@@ -210,9 +198,20 @@ int main()
             cin >> paisanikal;
             csh.give_withdrawl(paisanikal);
             break;
-
-        default:
+        case 3:
+            stment.give_enquiry();
+            break;
+        case 4:
+            cout << "Enter the new pin?\n";
+            cin >> p;
+            check.setPin(p);
+            cout << "Pin set sucessfully!\n";
             break;
         }
+    }
+    else
+    {
+        cout << "Incorrect Pin!\n";
+        cout << "You are unauthorized person Please contact your bank!\n";
     }
 }
