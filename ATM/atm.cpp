@@ -169,7 +169,7 @@ int main()
     cout << "\n\n1.FastCash";
     cout << "\t\t\t\t\t\t2.WithDrawl\n";
     cout << "\n3.BalanceEnquiry";
-    cout << "\t\t\t\t\t4.PinChange\n";
+
 
     cout << "\nNote:-If you are unauthorized person please leave immediately all the actions are being recorded!\n";
 
@@ -199,12 +199,6 @@ int main()
             break;
         case 3:
             stment.give_enquiry();
-            break;
-        case 4:
-            cout << "Enter the new pin?\n";
-            cin >> p;
-            check.setPin(p);
-            cout << "Pin set sucessfully!\n";
             break;
         }
     }
