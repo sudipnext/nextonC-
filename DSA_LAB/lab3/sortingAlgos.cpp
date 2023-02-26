@@ -1,10 +1,9 @@
 #include <iostream>
 #include <chrono>
 #include <ctime>
-#include <matplotlibcpp.h>
+
 using namespace std;
 using namespace chrono;
-namespace plt = matplotlibcpp;
 
 // Function to calculate
 // Fibonacci series
@@ -18,8 +17,6 @@ void selectionSort(int arr[], int n);
 int timeCalc(time_point<system_clock> start, time_point<system_clock> end, string name);
 int main()
 {
-    plt::plot({1, 2, 3, 4}, "*");
-    plt::show();
     int arr[10000], n, choice;
     // Using time point and system_clock
     // Getting random input of array
