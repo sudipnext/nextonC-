@@ -49,9 +49,9 @@ int main()
             quickSort(arr, 0, n - 1);
             display(arr, n);
             q_end = system_clock::now();
-            // QuickSort
-            input(arr, n);
-            display(arr, n);
+            // // QuickSort
+            // input(arr, n);
+            // display(arr, n);
             timeCalc(q_start, q_end, "QuickSort");
             break;
         case 3:
@@ -170,10 +170,10 @@ void selectionSort(int arr[], int n)
 // calculating time
 int timeCalc(time_point<system_clock> start, time_point<system_clock> end, string name)
 {
-    duration<double> elapsed_seconds_BubbleSort = end - start;
+    duration<double> elapsed_seconds = end - start;
     time_t end_time = system_clock::to_time_t(end);
 
     cout << "finished "<< name <<" computation at " << ctime(&end_time)
-         << "elapsed time: " << elapsed_seconds_BubbleSort.count() << "s\n";
+         << "elapsed time: " << elapsed_seconds.count() << "s\n";
         
 }
